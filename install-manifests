@@ -13,5 +13,7 @@ install -D -m 0664 -t $manifestdir minimal.yaml minimal-plus.hidden.yaml standar
 sed -i 's|fedora-bootc/||g' $manifestdir/standard.yaml $manifestdir/minimal.yaml $manifestdir/minimal-plus.hidden.yaml $manifestdir/edge.hidden.yaml 2>/dev/null || true
 # And install dependency manifests
 cp -a includes $manifestdir
+# Remove default.yaml to avoid error: File already exists
+rm $manifestdir/default.yaml
 # Set the default
 ln -sf standard.yaml $manifestdir/default.yaml
